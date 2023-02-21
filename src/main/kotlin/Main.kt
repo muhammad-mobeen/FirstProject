@@ -93,12 +93,34 @@ fun task3(age: Int){
     println("")
 }
 
-fun task4(){
-    val rndNumber = (1..100).random()
+fun task4(n: Int, m: Int){
+    val rndNumber = (n..m).random()
+    var tries = 1
     while(true)
     {
-        print("Please guess a number between 1 and 100: ")
-        val userNumber = readln()
+        print("Try #$tries\nPlease guess a number between 1 and 100: ")
+        var userNumber = readln().toInt()
+        if(userNumber > rndNumber)
+        {
+            println("Oops! Your guess was too high. Try Again!")
+            println("-------------------------------------------")
+            println("")
+        }
+        else if(userNumber < rndNumber)
+        {
+            println("Oops! Your guess was too low. Try Again")
+            println("-------------------------------------------")
+            println("")
+        }
+        else if(userNumber == rndNumber)
+        {
+            println()
+            println("*******************************************")
+            println("Wow! You got it on try $tries!")
+            println("*******************************************")
+            break
+        }
+        tries++
     }
 }
 
@@ -111,4 +133,5 @@ fun main(){
     task15(n)
     task2(n)
     task3(20)
+    task4(1,100)
 }
